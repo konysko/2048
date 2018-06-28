@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">   
+        <script src="logic.js"></script>
+        <title>Title</title>
+        <script>
+        window.onload = function () {
+          var game = new Game();
+          window.game = game;
+          document.addEventListener("keydown", game.move.bind(game));
+        };
+        </script>
+    </head>
+    <body>
+        <div class="board">
+            <h1>2048 super gra</h1>
+            <div class="wrapper">
+                <div id="l0" class="tile"></div>
+                <div id="l1" class="tile"></div>
+                <div id="l2" class="tile"></div>
+                <div id="l3" class="tile"></div>
+                <div id="l4" class="tile"></div>
+                <div id="l5" class="tile"></div>
+                <div id="l6" class="tile"></div>
+                <div id="l7" class="tile"></div>
+                <div id="l8" class="tile"></div>
+                <div id="l9" class="tile"></div>
+                <div id="l10" class="tile"></div>
+                <div id="l11" class="tile"></div>
+                <div id="l12" class="tile"></div>
+                <div id="l13" class="tile"></div>
+                <div id="l14" class="tile"></div>
+                <div id="l15" class="tile"></div>
+            </div>
+        </div>
+    </body>
+</html>
