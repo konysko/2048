@@ -10,6 +10,11 @@ class Game {
 
   }
 
+  setScore(number) {
+    this.score += eval(number);
+    document.querySelector('span#score').innerHTML = this.score;
+  }
+
   move (event) {
     if (this.finished) {
       return;
@@ -34,11 +39,14 @@ class Game {
     }
   }
 
-  afterMove () {
-    if (!this.findFreeTiles()) this.finished = true;
-    else this.putValueOnEmptyPlace();
+  afterMove (madeMove) {
+    const freeTiles = this.findFreeTiles();
+    if (madeMove && freeTiles) {
+      this.putValueOnEmptyPlace();
+    } else if (!freeTiles) this.finished = true;
   }
   moveLeft() {
+    let madeMove = false;
     for (let row = 0; row < this.size; row++) {
       let end = {
         index: 0,
@@ -52,26 +60,30 @@ class Game {
             this.removeNumber(tile);
             this.setNumber(this.board[row][end.index], number);
             end.value = number;
+            if (end.index !== col) madeMove = true;
           } else if (number === end.value) {
             this.removeNumber(tile);
             const newNumber = eval(number) + eval(number);
-            this.score += newNumber;
+            this.setScore(newNumber);
             this.setNumber(this.board[row][end.index], newNumber.toString());
             end.value = "";
             end.index++;
+            madeMove = true;
           } else if (number !== end.value) {
             this.removeNumber(tile);
             end.value = number;
             end.index++;
             this.setNumber(this.board[row][end.index], number);
+            if (end.index !== col) madeMove = true;
           }
         }
       }
     }
-    this.afterMove();
+    this.afterMove(madeMove);
   }
 
   moveRight() {
+    let madeMove = false;
     for (let row = 0; row < this.size; row++) {
       let end = {
         index: this.size - 1,
@@ -85,11 +97,13 @@ class Game {
             this.removeNumber(tile);
             this.setNumber(this.board[row][end.index], number);
             end.value = number;
+            if (end.index !== col) madeMove = true;
           } else if (number === end.value) {
             this.removeNumber(tile);
             const newNumber = eval(number) + eval(number);
-            this.score += newNumber;
+            this.setScore(number);
             this.setNumber(this.board[row][end.index], newNumber.toString());
+            madeMove = true;
             end.value = "";
             end.index--;
           } else if (number !== end.value) {
@@ -97,14 +111,16 @@ class Game {
             end.value = number;
             end.index--;
             this.setNumber(this.board[row][end.index], number);
+            if (end.index !== col) madeMove = true;
           }
         }
       }
     }
-    this.afterMove();
+    this.afterMove(madeMove);
   }
 
   moveTop() {
+    let madeMove = false;
     for (let col = 0; col < this.size; col++) {
       let end = {
         index: 0,
@@ -118,11 +134,13 @@ class Game {
             this.removeNumber(tile);
             this.setNumber(this.board[end.index][col], number);
             end.value = number;
+            if (end.index !== col) madeMove = true;
           } else if (number === end.value) {
             this.removeNumber(tile);
             const newNumber = eval(number) + eval(number);
-            this.score += newNumber;
+            this.setScore(number);
             this.setNumber(this.board[end.index][col], newNumber.toString());
+            madeMove = true;
             end.value = "";
             end.index++;
           } else if (number !== end.value) {
@@ -130,14 +148,16 @@ class Game {
             end.value = number;
             end.index++;
             this.setNumber(this.board[end.index][col], number);
+            if (end.index !== col) madeMove = true;
           }
         }
       }
     }
-    this.afterMove();
+    this.afterMove(madeMove);
   }
 
   moveBottom() {
+    let madeMove = false;
     for (let col = 0; col< this.size; col++) {
       let end = {
         index: this.size - 1,
@@ -151,23 +171,26 @@ class Game {
             this.removeNumber(tile);
             this.setNumber(this.board[end.index][col], number);
             end.value = number;
+            if (end.index !== col) madeMove = true;
           } else if (number === end.value) {
             this.removeNumber(tile);
             const newNumber = eval(number) + eval(number);
-            this.score += newNumber;
+            this.setScore(number);
             this.setNumber(this.board[end.index][col], newNumber.toString());
             end.value = "";
             end.index--;
+            madeMove = true;
           } else if (number !== end.value) {
             this.removeNumber(tile);
             end.value = number;
             end.index--;
             this.setNumber(this.board[end.index][col], number);
+            if (end.index !== col) madeMove = true;
           }
         }
       }
     }
-    this.afterMove();
+    this.afterMove(madeMove);
   }
 
 

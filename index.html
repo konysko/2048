@@ -8,14 +8,13 @@
         <script>
         window.onload = function () {
           var game = new Game();
-          window.game = game;
           document.addEventListener("keydown", game.move.bind(game));
         };
         </script>
     </head>
     <body>
         <div class="board">
-            <h1>2048 super gra</h1>
+            <span>points: <span id="score"></span></span>
             <div class="wrapper">
                 <div id="l0" class="tile"></div>
                 <div id="l1" class="tile"></div>
