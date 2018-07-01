@@ -197,7 +197,6 @@ class Game {
 
 
   removeNumber(tile) {
-    const no = tile.innerHTML;
     tile.classList.remove(...tile.classList);
     tile.classList.add('tile');
     tile.innerHTML = "";
@@ -239,11 +238,11 @@ class Game {
     return this.board.reduce((a,b) => a + b.filter(item => item.innerHTML === '').length,0);
   }
 
-//     iterateOver (callback) {
-//         this.board.map((row, indexRow) => {
-//            return row.map((element, indexCol) => {
-//                return callback(element);
-//            }); 
-//         });
-//     }
+  clearBoard () {
+    for (let i = 0; i < this.size; i++) {
+      for (let j = 0; j < this.size; j++) {
+        this.removeNumber(this.board[i][j]);
+      }
+    }
+  }
 }

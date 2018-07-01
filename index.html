@@ -8,19 +8,31 @@
         <title>2048</title>
         <script>
         window.onload = function () {
-          var game = new Game();
+          window.game = new Game();
           document.addEventListener('keydown', game.move.bind(game));
           document.addEventListener('swiped-left', game.moveLeft.bind(game));
           document.addEventListener('swiped-right', game.moveRight.bind(game));
           document.addEventListener('swiped-up', game.moveTop.bind(game));
           document.addEventListener('swiped-down', game.moveBottom.bind(game));
+          document.querySelector('div.new-game').addEventListener('click', () => {
+            console.log('executed');
+            game.clearBoard();
+            delete window.game;
+            window.game = new Game();
+          });
+
         };
         </script>
     </head>
     <body>
     <div class="header">
-        <div class="score">
-            <span>POINTS<div id="score" class="points"></div></span>
+        <div class="menu">
+            <div class="new-game">
+                <span>NEW GAME</span>
+            </div>
+            <div class="score">
+                POINTS<div id="score" class="points">0</div>
+            </div>
         </div>
     </div>
     <div class="board">
