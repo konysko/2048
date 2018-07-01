@@ -12,7 +12,7 @@ class Game {
 
   setScore(number) {
     this.score += eval(number);
-    document.querySelector('span#score').innerHTML = this.score;
+    let score = document.querySelector('div#score').innerHTML = this.score;
   }
 
   move (event) {
@@ -135,6 +135,7 @@ class Game {
             this.setNumber(this.board[end.index][col], number);
             end.value = number;
             if (end.index !== col) madeMove = true;
+
           } else if (number === end.value) {
             this.removeNumber(tile);
             const newNumber = eval(number) + eval(number);
@@ -148,7 +149,8 @@ class Game {
             end.value = number;
             end.index++;
             this.setNumber(this.board[end.index][col], number);
-            if (end.index !== col) madeMove = true;
+            if (end.index !== row) madeMove = true;
+
           }
         }
       }
@@ -185,7 +187,7 @@ class Game {
             end.value = number;
             end.index--;
             this.setNumber(this.board[end.index][col], number);
-            if (end.index !== col) madeMove = true;
+            if (end.index !== row) madeMove = true;
           }
         }
       }
@@ -196,7 +198,6 @@ class Game {
 
   removeNumber(tile) {
     const no = tile.innerHTML;
-    console.log(`l${no}`);
     tile.classList.remove(...tile.classList);
     tile.classList.add('tile');
     tile.innerHTML = "";
