@@ -9,11 +9,7 @@
         <script>
         window.onload = function () {
           window.game = new Game();
-          document.addEventListener('keydown', game.move.bind(game));
-          document.addEventListener('swiped-left', game.moveLeft.bind(game));
-          document.addEventListener('swiped-right', game.moveRight.bind(game));
-          document.addEventListener('swiped-up', game.moveTop.bind(game));
-          document.addEventListener('swiped-down', game.moveBottom.bind(game));
+
           document.querySelector('div.new-game').addEventListener('click', () => {
             console.log('executed');
             game.clearBoard();

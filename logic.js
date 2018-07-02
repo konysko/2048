@@ -7,7 +7,11 @@ class Game {
     this.finished = false;
     this.putValueOnEmptyPlace();
     this.putValueOnEmptyPlace();
-
+    document.addEventListener('keydown', this.move.bind(this));
+    document.addEventListener('swiped-left', this.moveLeft.bind(this));
+    document.addEventListener('swiped-right', this.moveRight.bind(this));
+    document.addEventListener('swiped-up', this.moveTop.bind(this));
+    document.addEventListener('swiped-down', this.moveBottom.bind(this));
   }
 
   setScore(number) {
