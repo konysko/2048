@@ -19,7 +19,7 @@ body {
     padding: 0.2em;
     height: 2.5em;
     border-radius: 8px;
-    margin-left: 0.5em;
+    margin-left: 0.5rem;
 }
 .new-game {
     background-color: #8a6b5f;
@@ -27,7 +27,7 @@ body {
     display:  inline-block;
     height: 2.5em;
     padding: 0.2em;
-    margin-right: 0.5em;
+    margin-right: 0.5rem;
     cursor:  pointer;
     user-select: none;
     -moz-user-select: none;
