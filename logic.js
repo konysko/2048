@@ -47,7 +47,10 @@ class Game {
     const freeTiles = this.findFreeTiles();
     if (madeMove && freeTiles) {
       this.putValueOnEmptyPlace();
-    } else if (!freeTiles) this.finished = true;
+    } else if (!freeTiles) {
+      this.finished = true;
+      window.alert("Game finished, click start over kawa!");
+    }
   }
   moveLeft() {
     let madeMove = false;
